@@ -11,15 +11,15 @@ interface NotesProps {
 }
 const Notes = async ({ params }: NotesProps) => {
   const { slug } = await params;
-  const status = slug[0] === "All" ? "" : slug[0];
+  const tag = slug[0] === "All" ? "" : slug[0];
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
-    queryKey: ["notes", 1, "", status],
-    queryFn: () => fetchNotes(1, "", status),
+    queryKey: ["notes", 1, "", tag],
+    queryFn: () => fetchNotes(1, "", tag),
   });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesClientPage status={status} />
+      <NotesClientPage tag={tag} />
     </HydrationBoundary>
   );
 };
