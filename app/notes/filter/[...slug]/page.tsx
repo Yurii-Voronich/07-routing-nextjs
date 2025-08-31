@@ -4,7 +4,7 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
-import NotesClientPage from "./notes.client";
+import NotesClientPage from "./Notes.client";
 
 interface NotesProps {
   params: Promise<{ slug: string[] }>;
