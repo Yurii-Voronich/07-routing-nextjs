@@ -11,10 +11,10 @@ import Loader from "@/components/Loader/Loader";
 import Modal from "@/components/Modal/Modal";
 import NoteForm from "@/components/NoteForm/NoteForm";
 
-interface NotesClientPage {
-  status: string;
+interface NotesClientPageProps {
+  tag: string;
 }
-const NotesClientPage = ({ status }: NotesClientPage) => {
+const NotesClientPage = ({ tag }: NotesClientPageProps) => {
   const [page, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
   const [modalIsOpen, setmodalIsOpen] = useState(false);
@@ -34,10 +34,10 @@ const NotesClientPage = ({ status }: NotesClientPage) => {
   const closeModal = () => {
     setmodalIsOpen(false);
   };
-  console.log(status);
+
   const { data, isSuccess, isLoading } = useQuery({
-    queryKey: ["notes", page, search, status],
-    queryFn: () => fetchNotes(page, search, status),
+    queryKey: ["notes", page, search, tag],
+    queryFn: () => fetchNotes(page, search, tag),
     placeholderData: keepPreviousData,
     refetchOnMount: false,
   });

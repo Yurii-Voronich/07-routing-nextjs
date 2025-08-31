@@ -33,6 +33,7 @@ const NotePreviewClient = () => {
             </div>
             <p className={css.content}>{note.content}</p>
             <p className={css.date}>{note.createdAt}</p>
+            <p className={css.content}>{note.tag}</p>
           </div>
         </div>
       )}
